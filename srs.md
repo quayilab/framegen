@@ -48,9 +48,19 @@ the development is to build a set of software which helping video streaming chan
 ### Unit Function Specifications
 #### 1. Generate video from configuration file
 1. Read configuration file
-2. 
+   1. Read objects from file
+   2. Read scenario and timeline
+   3. Read textual reference for generating speech
+2. Draw Object in scenario timeline in multi image files
+3. Generate voicing from text-to-speech
+4. Combine all image as a single video file along with the generated sounds
 #### 2. Generate vector image from configuration file
-#### 3. Access|Accept cascading command line instruction
+1. Read snapshot frame index from configuration file (*unit-testable*)
+2. Read snapshot specification from configuration file (*unit-testable*)
+3. Draw vector file for the frame index following the specification (*mock-testable*)
+#### 3. Accept cascading contextual command line instruction
+1. Define root command (*mock-tastable*)
+2. Define children commands (*multiple*; each *mock-testable*)
 #### 4. Accept command via secure and authenticated REST API
 #### 5. User management
 #### 6. Video management
