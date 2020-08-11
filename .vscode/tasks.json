@@ -1,0 +1,33 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "shell",
+			"label": "C/C++: gcc build active file",
+			"command": "/bin/g++",
+			"args": [
+				"-std=c++20",
+				"-g",
+				"-I",
+				"/home/agung/Applications/vcpkg/installed/x64-linux/include",
+				"${file}",
+				"-o",
+				"${fileDirname}/${fileBasenameNoExtension}",
+				"$(pkg-config",
+				"--cflags", 
+				"--libs",
+				"/home/agung/Applications/vcpkg/packages/tinyxml2_x64-linux/lib/pkgconfig/tinyxml2.pc)"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		}
+	]
+}
