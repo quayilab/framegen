@@ -17,7 +17,8 @@
 				"--cflags", 
 				"--libs",
 				"argtable3",
-				"tinyxml2)"
+				"tinyxml2",
+				"cairo)"
 			],
 			"options": {
 				"cwd": "${workspaceFolder}"

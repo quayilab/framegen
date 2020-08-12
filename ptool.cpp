@@ -9,11 +9,13 @@ using namespace std;
 /* _stripSvg implements the actions for strip-svg */
 int _stripSvg(int v, const char *outfile, const char *infile)
     {
-    printf("stripSvg syntax matched OK.\n");
-    printf("stripSvg matched OK.\n");
-    printf("  verbose = %d\n", v);
-    printf("  outfile = \"%s\"\n", outfile);
-    printf("  infile  = \"%s\"\n", infile);
+        if (v > 0) {
+            printf("stripSvg syntax matched OK.\n");
+            printf("stripSvg matched OK.\n");
+            printf("  verbose = %d\n", v);
+            printf("  outfile = \"%s\"\n", outfile);
+            printf("  infile  = \"%s\"\n", infile);
+        }
     stripSvg(string(infile), string(outfile), "0.0.1", v > 0);
     return 0;
     }
@@ -21,11 +23,13 @@ int _stripSvg(int v, const char *outfile, const char *infile)
 /* _makeYaml implements the actions for make-yaml */
 int _makeYaml(int v, const char *outfile, const char *infile)
     {
-    printf("makeYaml syntax matched OK.\n");
-    printf("receiving arguments:\n");
-    printf("  verbose = %d\n", v);
-    printf("  outfile = \"%s\"\n", outfile);
-    printf("  infile  = \"%s\"\n", infile);
+        if (v > 0) {
+            printf("makeYaml syntax matched OK.\n");
+            printf("receiving arguments:\n");
+            printf("  verbose = %d\n", v);
+            printf("  outfile = \"%s\"\n", outfile);
+            printf("  infile  = \"%s\"\n", infile);
+        }
     saveToYaml(string(infile), string(outfile), "0.0.1", v > 0);
     return 0;
     }
