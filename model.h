@@ -36,12 +36,6 @@ vector<Path> getPaths(XMLElement* elComp) {
         path = path->NextSiblingElement(); 
         paths.push_back(p);
     } while (path != NULL);
-    cout << "paths: " << endl;
-    for (int i=0; i<paths.size(); i++) {
-        cout << "  - ID: \"" << paths[i].ID << "\"" << endl;
-        cout << "    Command: \"" << paths[i].Command << "\"" << endl;
-        cout << "    Style: \"" << paths[i].Style << "\"" << endl;
-    }
     return paths;
 }
 
@@ -50,10 +44,8 @@ Component getComponent(string fileName) {
     XMLDocument elDoc;
     elDoc.LoadFile(fileName.c_str());
     XMLElement* elComp = elDoc.FirstChildElement("svg")->FirstChildElement("g");
-    cout << "version: 0.0.1" << endl;
     if (!elComp->NoChildren()) {
         component.ID = string(elComp->Attribute("data-component-id"));
-        cout << "id: \"" << component.ID << "\"" << endl;
         component.Paths = getPaths(elComp);
     }
     return component;
@@ -69,5 +61,21 @@ void stripSvg(string srcFile, string destFile, string version) {
         output << "<path id=\"" << p.ID << "\" d=\"" << p.Command << "\" style=\"" << p.Style << "\"/>";
     }
     output << "</g></svg>";
+    output.close();
+}
+
+void saveToYaml(string srcFile, string destFile, string version) {
+    ofstream output;
+    Component c = getComponent(srcFile);
+    output.open(destFile);
+    output << "version: \"" << version << "\"\n";
+    output << "id: \"" << c.ID << "\"\n";
+    output << "paths:\n";
+    for (int i=0; i <c.Paths.size(); i++) {
+        Path p = c.Paths[i];
+        output << "  - id: \"" << p.ID << "\"\n";
+        output << "    command: \"" << p.Command << "\"\n";
+        output << "    style: \"" << p.Style << "\"\n";
+    }
     output.close();
 }
