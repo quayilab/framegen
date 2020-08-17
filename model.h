@@ -1,10 +1,9 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include <iostream>
+#include <cairo/cairo.h>
 #include <string>
 #include <vector>
 #include <fstream>
 #include <tinyxml2.h>
-#include <cairo/cairo.h>
 
 using namespace std;
 using namespace tinyxml2;
@@ -154,16 +153,18 @@ void saveToYaml(string srcFile, string destFile, string version, bool verbose = 
     output.close();
 }
 
-/*void renderPath(cairo_t* cr, string path, string style) {
+void renderPath(cairo_t* cr, string path, string style) {
     double r, g, b, a;
     cairo_set_source_rgba(cr, r, g, b, a);
-    //cairo_rende
+    //cairo_set_
 }
 
 void renderComponent(cairo_surface_t* sfc, Component* component, double x, double y) {
+    // TODO: parse svg color
+    // TODO: parse svg styles
     cairo_t* cr = cairo_create(sfc);
     for (int i = 0; i < component->Paths.size(); i++) {
         Path p = component->Paths[i];
         renderPath(cr, p.Command, p.Style);
     }
-}*/
+}
