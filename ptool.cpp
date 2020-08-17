@@ -1,6 +1,7 @@
 #include <iostream>
 #include <argtable3.h>
 #include "model.h"
+
 using namespace std;
 
 #define REG_EXTENDED 1
@@ -17,7 +18,7 @@ int _stripSvg(int v, const char *outfile, const char *infile)
             printf("  infile  = \"%s\"\n", infile);
         }
     stripSvg(string(infile), string(outfile), "0.0.1", v > 0);
-    return 0;
+    return 0; 
     }
 
 /* _makeYaml implements the actions for make-yaml */
@@ -33,6 +34,8 @@ int _makeYaml(int v, const char *outfile, const char *infile)
     saveToYaml(string(infile), string(outfile), "0.0.1", v > 0);
     return 0;
     }
+
+// TODO: create subcommand "render-component" to test rendering component loaded from file
 
 /* _help implements the actions for help */
 int _help(int help, int version, const char *progname,
@@ -163,4 +166,4 @@ exit:
     arg_freetable(argtable_help,sizeof(argtable_help)/sizeof(argtable_help[0]));
 
     return exitcode;
-    }
+}
