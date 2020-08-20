@@ -1,2 +1,2 @@
 # framegen
-A simple helper tool for generating images for video frame
+This is a serious toy project which takes specifically formatted svg files and make still image(s) and videos using some dynamic parameters in a separate config file. This project is still in heavy development.
